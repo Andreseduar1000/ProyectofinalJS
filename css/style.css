@@ -1,0 +1,48 @@
+.compra_cordoba{
+    display: flex;
+    justify-content: space-evenly;
+}
+.compra{
+    display: flex;
+    justify-content: space-evenly;
+}
+h1{
+    background-color: #18e6dc;
+    color: black;
+    text-align: center;
+}
+h2{
+    background-color: #64606094;
+    color: black;
+    text-align: center;
+}
+
+.paisaje_cord{
+    width: auto;
+    height: 200px;
+}
+.card-body{
+    background-color: #ccedf1;
+    height: auto;
+}
+
+td{
+    height: 20px;
+    width: auto;
+}
+#carrito{
+    position: fixed;
+    display: none;
+    top: 0; 
+    right: 0;
+    width: 500px;
+    height: 100vh; 
+    background-color: #a4d1d8;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index:10000; 
+}
+#btnhola{
+    margin-left: 20px;
+    position: fixed;
+}
+
