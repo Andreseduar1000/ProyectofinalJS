@@ -58,6 +58,25 @@ function json(){
     
     
 }
+function animacion(){
+
+    Toastify({
+        text: `Paquete Agregado`,
+        duration:2000,
+        gravity:"upper",
+        position:"right",
+        style:{
+            fontSize: "14px",
+            fontFamily:"Verdana",
+            color:"black",
+            background:"white"
+        }
+
+
+        }    
+    ).showToast();
+};
+
 
 //RECOLECTA DATOS DEL LOCALSTORAGE Y IMPRIME SI SE RENUEVA LA PAGINA
 function recuperar_datos (){
@@ -345,12 +364,14 @@ function borrarpaquete(e){
 
 let btnCompra = document.getElementsByClassName("boton");
 
+
 console.log(btnCompra);
 
 
 for( let botones of btnCompra ){
 
     botones.addEventListener("click",carrito);
+    botones.addEventListener("click",animacion);
 }
 
 //MOSTRAR BOTON
@@ -367,3 +388,8 @@ boton_ocultar.addEventListener("click",ocultar);
 function ocultar(){
     document.getElementById('carrito').style.display='none';
 }
+
+
+let boton=document.getElementById("btncompra");
+
+
