@@ -44,5 +44,10 @@ td{
 #btnhola{
     margin-left: 20px;
     position: fixed;
+    width: 40px;
+    cursor: pointer;
 }
-
+input{
+    text-align: center;
+    height: 30px;
+}

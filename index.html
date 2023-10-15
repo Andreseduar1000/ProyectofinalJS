@@ -18,7 +18,8 @@
 
         <main>
             <h1>PAQUETES TURISTICOS</h1>
-            <button class="btn btn-primary" id="btnhola">Carrito</button>
+            <img id="btnhola" src="./img/carrito.png" alt="carrito de compras">
+            <!--<button class="btn btn-primary" id="btnhola">Carrito</button>-->
             <i class="bi bi-cart-fill" id="revisar_carrito"></i>
             <div class="principal">
                 <h2>Cordoba</h2>
@@ -42,13 +43,13 @@
                             Iglesia de los Capuchinos y Museo Historico UNC. <br><br>
                             -Duracion: 4 - 5 hrs. <br><br>
                             -Traslado: Incluido.</p>
-                            <p>Cantidad de Personas: <select name="personas" id="cantidad-cordoba">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select></p>
-                        <span>Precio: $18000</span>
+                            <section>
+                                <p>Cantidad de personas:</p>
+                            <input type="number" id="valor-cor" name="PERSONAS" 
+                            required="required" min="1" max="3" step="1" value="1" class="form-control">
+                            </section>
+                            <p>Precio: $<span id="preciocor">18000</span></p>
+                        
                         <button class="btn btn-primary boton">Comprar paquete</button>
                     </div>
                 </div>
@@ -68,13 +69,12 @@
                             mirador de altura. <br> <br>
                             -Duracion de 8 a 10 hrs. <br><br>
                             -Traslado: Incluido. </p>
-                            <p>Cantidad de Personas: <select name="personas" id="cantidad-cumbrecita">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select></p>
-                            <span>Precio: $50000</span>
+                            <section>
+                                <p>Cantidad de personas:</p>
+                            <input type="number" id="valor-cumbre" name="PERSONAS" 
+                            required="required" min="1" max="3" step="1" value="1" class="form-control">
+                            </section>
+                            <p>Precio: $<span id="precio-cumbre">50000</span></p>
                         <button class="btn btn-primary boton">Comprar paquete</button>
                     </div>
                 </div>
@@ -94,13 +94,12 @@
                             -Duracion: 3 dias. <br><br>
                             -Dificultad: Alta. <br><br>
                             -Traslado: Incluido.</p>
-                            <p>Cantidad de Personas: <select name="personas" id="cantidad-cerro">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select></p>
-                        <span>Precio: $250000</span>
+                            <section>
+                                <p>Cantidad de personas:</p>
+                            <input type="number" id="valor-cerro" name="PERSONAS" 
+                            required="required" min="1" max="3" step="1" value="1" class="form-control">
+                            </section>
+                        <p>Precio: $<span id="precio-cerro">250000</span></p>
                         <button class="btn btn-primary boton">Comprar paquete</button>
                     </div>
                 </div>
@@ -123,13 +122,12 @@
                             Salida: 09 - 15 hrs. <br>
                             Traslado: Incluido. <br>
                             Equipo tecnico si la actividad lo requiere. <br></p>
-                            <p>Cantidad de Personas: <select name="personas" id="cantidad-glaciar">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select></p>
-                        <span>Precio: $28000</span>
+                            <section>
+                                <p>Cantidad de personas:</p>
+                            <input type="number" id="valor-glaciar" name="PERSONAS" 
+                            required="required" min="1" max="3" step="1" value="1" class="form-control">
+                            </section>
+                        <p>Precio: $<span id="precio-martial">28000</span></p>
                         <button class="btn btn-primary boton">Comprar paquete</button>
                     </div>
                 </div>
@@ -146,13 +144,12 @@
                             Fuego. <br>
                             Incluye: Almuerzo, canotaje. <br>
                             Dificultad: Moderada.</p><br>
-                            <p>Cantidad de Personas: <select name="personas" id="cantidad-parque">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select></p>
-                        <span>Precio: $40000</span>
+                            <section>
+                                <p>Cantidad de personas:</p>
+                            <input type="number" id="valor-parque" name="PERSONAS" 
+                            required="required" min="1" max="3" step="1" value="1" class="form-control">
+                            </section>
+                        <p>Precio: $<span id="precio-parque">40000</span></p>
                         <button class="btn btn-primary boton">Comprar paquete</button>
                     </div>
                 </div>
@@ -169,14 +166,12 @@
                             Ratio Clientes Guia: 6 pasajeros cada 1 guía. <br>
                             Horario: 8:00 - 20:30 aprox. <br>
                             Traslado: Incluido.</p>
-                            <p>Cantidad de Personas: <select name="personas" id="cantidad-albino">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select></p>
-
-                        <span>Precio: $65000</span>
+                            <section>
+                                <p>Cantidad de personas:</p>
+                            <input type="number" id="valor-albino" name="PERSONAS" 
+                            required="required" min="1" max="3" step="1" value="1" class="form-control">
+                            </section>
+                        <p>Precio: $<span id="precio-albino">65000</span></p>
                         <button class="albino btn btn-primary boton">Comprar paquete</button>
                     </div>
                 </div>
@@ -198,6 +193,7 @@
                     </tbody>
                 </table>
                 <button class="btn btn-primary" id="btnchao">Ocultar Carrito</button>
+                
             </div>
         </div>
         </main>

@@ -11,26 +11,39 @@ function carrito(e){
 
 
     let nombrePaquete= padre.querySelector("h5").innerText;
-    let preciopaquete=padre.querySelector("span").innerText;
-    let imgpaquete=abuelo.querySelector("img").src;
-    let cantidadcordoba=document.getElementById("cantidad-cordoba").value;
-    let cantidadcumbrecita=document.getElementById("cantidad-cumbrecita").value;
-    let cantidadcerro=document.getElementById("cantidad-cerro").value;
-    let cantidadglaciar=document.getElementById("cantidad-glaciar").value;
-    let cantidadparque=document.getElementById("cantidad-parque").value;
-    let cantidadalbino=document.getElementById("cantidad-albino").value;
+    
+    let imgpaquete=abuelo.querySelector("img")  .src;
 
+    let preciocordoba=document.getElementById("preciocor").innerText;
+    let preciocumbre=document.getElementById("precio-cumbre").innerText;
+    let preciocerro=document.getElementById("precio-cerro").innerText;
+    let precioglaciar=document.getElementById("precio-martial").innerText;
+    let precioparque=document.getElementById("precio-parque").innerText;
+    let precioalbino=document.getElementById("precio-albino").innerText
+
+    let valorescor=document.getElementById("valor-cor").value;
+    let valorescumbre=document.getElementById("valor-cumbre").value;
+    let valorescerro=document.getElementById("valor-cerro").value;
+    let valoresglaciar=document.getElementById("valor-glaciar").value;
+    let valoresparque=document.getElementById("valor-parque").value;
+    let valoresalbino=document.getElementById("valor-albino").value;
+    
 
     let paquetes={
         nombre:nombrePaquete,
-        precio:preciopaquete,
         img:imgpaquete,
-        cantidadc:cantidadcordoba,
-        cantidadcum:cantidadcumbrecita,
-        canticerro:cantidadcerro,
-        cantiglaciar:cantidadglaciar,
-        cantipaque:cantidadparque,
-        cantialbino:cantidadalbino
+        precicor:preciocordoba,
+        precicerro:preciocerro,
+        precicumbre:preciocumbre,
+        preciglaciar:precioglaciar,
+        preciparque:precioparque,
+        precialbino:precioalbino,
+        cantidadcor:valorescor,
+        cantidadcumbre:valorescumbre,
+        cantidadcerro:valorescerro,
+        cantidadglaciar:valoresglaciar,
+        cantidadparque:valoresparque,
+        cantidadalbino:valoresalbino
     }
     // ACA SE ENVIAN LOS DATOS AL ARREGLO
     arreglo_carrito.push(paquetes);
@@ -53,31 +66,130 @@ function recuperar_datos (){
         let recuperar_paquetes= localStorage.getItem("paquetes");
         let paquete_parseado=JSON.parse(recuperar_paquetes);
         console.log(paquete_parseado);
+        let acu=0;
+        let acualbino=0;
+        let acucerro=0;
+        let acucord=0;
+        let acucumbre=0;
+        let acuglaciar=0;
+        let acuparque=0;
 
         let tabla2=document.getElementById("tbody");
 
         for (let elementos of paquete_parseado){
-
+            /*
             let fila2= document.createElement("tr");
             fila2.innerHTML = `<td><img src="${elementos.img}"style="width: 8rem;"></td>
                         <td style="font-size: 15px;"><p>${elementos.nombre}</p></td>
                         <td style="font-size: 15px;">${elementos.cantidad}</td>
-
                         <td style="font-size: 15px;">${elementos.precio}</td>
                         <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
         tabla2.append(fila2);
+        }*/
+
+        if (elementos.nombre=="Tour Ciudad de Cordoba"){
+            let preciocord=parseInt(elementos.precicor);
+            let cantidadcord=parseInt(elementos.cantidadcor);
+            let totalcord=preciocord*cantidadcord;
+            let fila2 = document.createElement("tr");
+            
+            fila2.innerHTML = `<td><img src="${elementos.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${elementos.nombre}</p></td>
+                        <td style="font-size: 15px;">${elementos.cantidadcor}</td>
+                        <td style="font-size: 15px;">$${totalcord}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla2.appendChild(fila2);
+        acucord=acucord+totalcord;
 
         }
+        else if (elementos.nombre=="Tour Cumbrecita y Villa General Belgrano"){
+            let precio=parseInt(elementos.precicumbre);
+            let cantidad=parseInt(elementos.cantidadcumbre);
+            let totalcumbre=precio*cantidad;
+
+            let fila2 = document.createElement("tr");
+            fila2.innerHTML = `<td><img src="${elementos.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${elementos.nombre}</p></td>
+                        <td style="font-size: 15px;">${elementos.cantidadcumbre}</td>
+                        <td style="font-size: 15px;">$${totalcumbre}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla2.append(fila2);
+        acucumbre=acucumbre+totalcumbre;
+        }
+        else if (elementos.nombre=="Tour Cerro Champaqui"){
+            let precio=parseInt(elementos.precicerro);
+            let cantidad=parseInt(elementos.cantidadcerro);
+            let totalcerro=precio*cantidad;
+
+            let fila2 = document.createElement("tr");
+            fila2.innerHTML = `<td><img src="${elementos.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${elementos.nombre}</p></td>
+                        <td style="font-size: 15px;">${elementos.cantidadcerro}</td>
+                        <td style="font-size: 15px;">$${totalcerro}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla2.append(fila2);
+        acucerro=acucerro+totalcerro;
+        }
+        else if (elementos.nombre=="Aventura Glaciar Martial"){
+            let precio=parseInt(elementos.preciglaciar);
+            let cantidad=parseInt(elementos.cantidadglaciar);
+            let totalglaciar=precio*cantidad;
+
+            let fila2 = document.createElement("tr");
+            fila2.innerHTML = `<td><img src="${elementos.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${elementos.nombre}</p></td>
+                        <td style="font-size: 15px;">${elementos.cantidadglaciar}</td>
+                        <td style="font-size: 15px;">$${totalglaciar}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla2.append(fila2);
+        acuglaciar=acuglaciar+totalglaciar;
+        }
+        else if (elementos.nombre=="Aventura Parque Nacional"){
+            let precio=parseInt(elementos.preciparque);
+            let cantidad=parseInt(elementos.cantidadparque);
+            let totalparque=precio*cantidad;
+            let fila2 = document.createElement("tr");
+            fila2.innerHTML = `<td><img src="${elementos.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${elementos.nombre}</p></td>
+                        <td style="font-size: 15px;">${elementos.cantidadparque}</td>
+                        <td style="font-size: 15px;">$${totalparque}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla2.append(fila2);
+        acuparque=acuparque+totalparque;
+        }
+        else if (elementos.nombre=="Ice Trekking Glaciar Ojo de Albino"){
+            let precio=parseInt(elementos.precialbino);
+            let cantidad=parseInt(elementos.cantidadalbino);
+            let totalalbino=precio*cantidad;
+
+            let fila2 = document.createElement("tr");
+            fila2.innerHTML = `<td><img src="${elementos.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${elementos.nombre}</p></td>
+                        <td style="font-size: 15px;">${elementos.cantidadalbino}</td>
+                        <td style="font-size: 15px;"$${totalalbino}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla2.append(fila2);
+        acualbino=acualbino+totalalbino;
+        }
+        acu=acualbino+acucerro+acucord+acucumbre+acuglaciar+acuparque;
+        console.log(acu);
+        
+    }
+    let mostrar=document.createElement("tr")
+    mostrar.innerHTML = `<td style="font-size: 16px; color:white; ">Total: $${acu}</td>`
+
+    tabla2.append(mostrar);  
+
+
         let borrarboton = document.querySelectorAll(".btnbtn");
 
         for( let btn of borrarboton){
             btn.addEventListener("click" , borrarpaquete );
         }
-
         
-
     }
 }
+
 
 
 
@@ -85,22 +197,115 @@ function recuperar_datos (){
 function revisar_carrito(){
     let tabla = document.getElementById("tbody");
     tabla.innerHTML = "";
-
+    
+let acu=0;
+let acualbino=0;
+let acucerro=0;
+let acucord=0;
+let acucumbre=0;
+let acuglaciar=0;
+let acuparque=0;
     for( paquetes of arreglo_carrito){
-
-        let fila = document.createElement("tr");
-        fila.innerHTML = `<td><img src="${paquetes.img}"style="width: 8rem;"></td>
+        
+        if (paquetes.nombre=="Tour Ciudad de Cordoba"){
+            let preciocord=parseInt(paquetes.precicor);
+            let cantidadcord=parseInt(paquetes.cantidadcor);
+            let totalcord=preciocord*cantidadcord;
+            let fila = document.createElement("tr");
+            
+            fila.innerHTML = `<td><img src="${paquetes.img}"style="width: 8rem;"></td>
                         <td style="font-size: 15px;"><p>${paquetes.nombre}</p></td>
-                        <td style="font-size: 15px;">${paquetes.cantidad}</td>
-                        <td style="font-size: 15px;">${paquetes.precio}</td>
+                        <td style="font-size: 15px;">${paquetes.cantidadcor}</td>
+                        <td style="font-size: 15px;">$${totalcord}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla.appendChild(fila);
+        acucord=acucord+totalcord;
+
+        }
+        else if (paquetes.nombre=="Tour Cumbrecita y Villa General Belgrano"){
+            let precio=parseInt(paquetes.precicumbre);
+            let cantidad=parseInt(paquetes.cantidadcumbre);
+            let totalcumbre=precio*cantidad;
+
+            let fila = document.createElement("tr");
+            fila.innerHTML = `<td><img src="${paquetes.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${paquetes.nombre}</p></td>
+                        <td style="font-size: 15px;">${paquetes.cantidadcumbre}</td>
+                        <td style="font-size: 15px;">$${totalcumbre}</td>
                         <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
         tabla.append(fila);
+        acucumbre=acucumbre+totalcumbre;
+        }
+        else if (paquetes.nombre=="Tour Cerro Champaqui"){
+            let precio=parseInt(paquetes.precicerro);
+            let cantidad=parseInt(paquetes.cantidadcerro);
+            let totalcerro=precio*cantidad;
+
+            let fila = document.createElement("tr");
+            fila.innerHTML = `<td><img src="${paquetes.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${paquetes.nombre}</p></td>
+                        <td style="font-size: 15px;">${paquetes.cantidadcerro}</td>
+                        <td style="font-size: 15px;">$${totalcerro}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla.append(fila);
+        acucerro=acucerro+totalcerro;
+        }
+        else if (paquetes.nombre=="Aventura Glaciar Martial"){
+            let precio=parseInt(paquetes.preciglaciar);
+            let cantidad=parseInt(paquetes.cantidadglaciar);
+            let totalglaciar=precio*cantidad;
+
+            let fila = document.createElement("tr");
+            fila.innerHTML = `<td><img src="${paquetes.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${paquetes.nombre}</p></td>
+                        <td style="font-size: 15px;">${paquetes.cantidadglaciar}</td>
+                        <td style="font-size: 15px;">$${totalglaciar}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla.append(fila);
+        acuglaciar=acuglaciar+totalglaciar;
+        }
+        else if (paquetes.nombre=="Aventura Parque Nacional"){
+            let precio=parseInt(paquetes.preciparque);
+            let cantidad=parseInt(paquetes.cantidadparque);
+            let totalparque=precio*cantidad;
+            let fila = document.createElement("tr");
+            fila.innerHTML = `<td><img src="${paquetes.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${paquetes.nombre}</p></td>
+                        <td style="font-size: 15px;">${paquetes.cantidadparque}</td>
+                        <td style="font-size: 15px;">$${totalparque}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla.append(fila);
+        acuparque=acuparque+totalparque;
+        }
+        else if (paquetes.nombre=="Ice Trekking Glaciar Ojo de Albino"){
+            let precio=parseInt(paquetes.precialbino);
+            let cantidad=parseInt(paquetes.cantidadalbino);
+            let totalalbino=precio*cantidad;
+
+            let fila = document.createElement("tr");
+            fila.innerHTML = `<td><img src="${paquetes.img}"style="width: 8rem;"></td>
+                        <td style="font-size: 15px;"><p>${paquetes.nombre}</p></td>
+                        <td style="font-size: 15px;">${paquetes.cantidadalbino}</td>
+                        <td style="font-size: 15px;"$${totalalbino}</td>
+                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
+        tabla.append(fila);
+        acualbino=acualbino+totalalbino;
+        }
+        acu=acualbino+acucerro+acucord+acucumbre+acuglaciar+acuparque;
+        console.log(acu);
         
     }
+    let mostrar=document.createElement("tr")
+    mostrar.innerHTML = `<td style="font-size: 16px; color:white; ">Total: $${acu}</td>`
+
+    tabla.append(mostrar);  
     let borrarboton = document.querySelectorAll(".btnbtn");
 
     for( let btn of borrarboton){
         btn.addEventListener("click" , borrarpaquete );
+
+        
+
 
     }
 
@@ -115,20 +320,21 @@ function borrarpaquete(e){
     let abuelo = e.target.parentNode.parentNode;
     let eliminar=abuelo.querySelector("p").innerText;
     console.log(eliminar);
-    
-    abuelo.remove();
-    
 
+    abuelo.remove();
     function eliminarPaquete(paquetes){
         return paquetes.nombre != eliminar;
-    }
+        
 
+    }
     let busquedafilter=arreglo_carrito.filter(eliminarPaquete);
+    
     arreglo_carrito=busquedafilter;
+    
+
 // SE VA ACTUALIZANDO LOCALSTORAGE CADA VEZ QUE SE BORRA ELEMENTO
     json();
-    
-    
+    revisar_carrito();
     
 }
 
