@@ -39,7 +39,7 @@ td{
     height: 100vh; 
     background-color: #a4d1d8;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    z-index:10000; 
+    z-index:1000; 
 }
 #btnhola{
     margin-left: 20px;
@@ -51,3 +51,11 @@ input{
     text-align: center;
     height: 30px;
 }
+
+.botones{
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-sweetalert {
+    z-index: 20000;}

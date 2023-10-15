@@ -50,7 +50,61 @@ function carrito(e){
     revisar_carrito();
     json();
 }
+function agregar(acu){
+    let btnfinal=document.getElementById("btnfinal");
+    btnfinal.addEventListener("click", function() {
+        if (acu === 0) {
+            Swal.fire({
+                position: 'center',   
+                icon: 'error',
+                title: 'Carrito sin paquetes',
+                showConfirmButton: true,
+                timer: 1500,
+                gravity: "top"
+            });
+        } else {
+            Swal.fire({
+                position: 'center',   
+                icon: 'success',
+                title: '¡Compra finalizada!',
+                showConfirmButton: true,
+                timer: 1500,
+                gravity: "top"
+            });
+            arreglo_carrito = [];
+            json();
+            revisar_carrito();
+        }
+    });
+}
 
+
+
+/*
+function sweet(acu){
+    if(acu!=0){
+        Swal.fire({
+            position: 'center',   
+            icon: 'success',
+            title: 'Gracias por su Compra!',
+            showConfirmButton: true,
+            timer: 1500,
+            gravity:"top",
+            
+        })
+    }
+    else if (acu==0){
+        Swal.fire({
+            position: 'center',   
+            icon: 'error',
+            title: 'Carrito sin paquetes',
+            showConfirmButton: true,
+            timer: 1500,
+            gravity:"top",
+        })    
+    }
+}
+*/
 // ENVIAMOS LOS DATOS A LOCALSTORAGE
 function json(){
     let carritoJson=JSON.stringify(arreglo_carrito);
@@ -63,7 +117,7 @@ function animacion(){
     Toastify({
         text: `Paquete Agregado`,
         duration:2000,
-        gravity:"upper",
+        gravity:"top",
         position:"right",
         style:{
             fontSize: "14px",
@@ -96,15 +150,6 @@ function recuperar_datos (){
         let tabla2=document.getElementById("tbody");
 
         for (let elementos of paquete_parseado){
-            /*
-            let fila2= document.createElement("tr");
-            fila2.innerHTML = `<td><img src="${elementos.img}"style="width: 8rem;"></td>
-                        <td style="font-size: 15px;"><p>${elementos.nombre}</p></td>
-                        <td style="font-size: 15px;">${elementos.cantidad}</td>
-                        <td style="font-size: 15px;">${elementos.precio}</td>
-                        <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
-        tabla2.append(fila2);
-        }*/
 
         if (elementos.nombre=="Tour Ciudad de Cordoba"){
             let preciocord=parseInt(elementos.precicor);
@@ -210,8 +255,6 @@ function recuperar_datos (){
 }
 
 
-
-
 //IMPRESION DE CARRITO
 function revisar_carrito(){
     let tabla = document.getElementById("tbody");
@@ -311,26 +354,22 @@ let acuparque=0;
         acualbino=acualbino+totalalbino;
         }
         acu=acualbino+acucerro+acucord+acucumbre+acuglaciar+acuparque;
-        console.log(acu);
         
     }
     let mostrar=document.createElement("tr")
     mostrar.innerHTML = `<td style="font-size: 16px; color:white; ">Total: $${acu}</td>`
-
+    
     tabla.append(mostrar);  
     let borrarboton = document.querySelectorAll(".btnbtn");
 
     for( let btn of borrarboton){
         btn.addEventListener("click" , borrarpaquete );
 
-        
-
 
     }
+    agregar(acu);
 
 }
-
-
 
 
 //BORRAR ARTICULOS DEL CARRITO
@@ -391,5 +430,4 @@ function ocultar(){
 
 
 let boton=document.getElementById("btncompra");
-
 
