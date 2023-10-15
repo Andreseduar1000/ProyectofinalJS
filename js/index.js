@@ -60,7 +60,9 @@ function agregar(acu){
                 title: 'Carrito sin paquetes',
                 showConfirmButton: true,
                 timer: 1500,
-                gravity: "top"
+                gravity: "top",
+                color:"black",
+                background:"white",
             });
         } else {
             Swal.fire({
@@ -69,7 +71,9 @@ function agregar(acu){
                 title: '¡Compra finalizada!',
                 showConfirmButton: true,
                 timer: 1500,
-                gravity: "top"
+                gravity: "top",
+                color:"black",
+                background:"white",
             });
             arreglo_carrito = [];
             json();
