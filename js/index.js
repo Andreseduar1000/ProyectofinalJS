@@ -3,11 +3,11 @@ let carritonuevo=[];
 
 document.addEventListener("DOMContentLoaded",recuperar_datos());
 
-// API WEATHER
+// API WEATHER y FETCH
 
-navigator.geolocation.getCurrentPosition(mostrar_posicion)
+navigator.geolocation.getCurrentPosition(posiciones)
 
-function mostrar_posicion(posicion){
+function posiciones(posicion){
     let lati=posicion.coords.latitude;
     let longi=posicion.coords.longitude;
     let key="d2327fcdcf0774ac5b3d04dbb6062e18"
@@ -351,7 +351,8 @@ let acuparque=0;
             fila.innerHTML = `<td><img src="${paquetes.img}"style="width: 8rem;"></td>
                         <td style="font-size: 15px;"><p>${paquetes.nombre}</p></td>
                         <td style="font-size: 15px;">${paquetes.cantidadalbino}</td>
-                        <td style="font-size: 15px;"$${totalalbino}</td>
+                        <td style="font-size: 15px;">$${totalalbino}</td>
+
                         <td><button class="btn btn-danger btnbtn">Borrar</button></td>`;
         tabla.append(fila);
         acualbino=acualbino+totalalbino;
