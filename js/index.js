@@ -3,6 +3,30 @@ let carritonuevo=[];
 
 document.addEventListener("DOMContentLoaded",recuperar_datos());
 
+// API WEATHER
+
+navigator.geolocation.getCurrentPosition(mostrar_posicion)
+
+function mostrar_posicion(posicion){
+    let lati=posicion.coords.latitude;
+    let longi=posicion.coords.longitude;
+    let key="d2327fcdcf0774ac5b3d04dbb6062e18"
+
+fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&appid=${key}&units=metric&lang=es`)
+    .then(response=>response.json())
+    .then(data=>{
+        console.log(data);
+        document.getElementById("header").innerHTML=`<p>${data.name}</p>
+                                                    <p style="text-transform: capitalize;">${data.weather[0].description}</p>
+                                                    <p>Temperatura: ${data.main.temp}°C</p>
+                                                    <p>Humedad:${data.main.humidity}%</p>
+                                                    <p>Pais: ${data.sys.country}</p>
+                                                    <p>Viento: ${data.wind.speed}km</p>`
+    })
+
+}
+
+//CARRITO
 function carrito(e){
 
     let hijo= e.target;
@@ -83,32 +107,6 @@ function agregar(acu){
 }
 
 
-
-/*
-function sweet(acu){
-    if(acu!=0){
-        Swal.fire({
-            position: 'center',   
-            icon: 'success',
-            title: 'Gracias por su Compra!',
-            showConfirmButton: true,
-            timer: 1500,
-            gravity:"top",
-            
-        })
-    }
-    else if (acu==0){
-        Swal.fire({
-            position: 'center',   
-            icon: 'error',
-            title: 'Carrito sin paquetes',
-            showConfirmButton: true,
-            timer: 1500,
-            gravity:"top",
-        })    
-    }
-}
-*/
 // ENVIAMOS LOS DATOS A LOCALSTORAGE
 function json(){
     let carritoJson=JSON.stringify(arreglo_carrito);
@@ -116,6 +114,7 @@ function json(){
     
     
 }
+//ANIMACION AL AGREGAR PAQUETE
 function animacion(){
 
     Toastify({
@@ -254,7 +253,7 @@ function recuperar_datos (){
         for( let btn of borrarboton){
             btn.addEventListener("click" , borrarpaquete );
         }
-        
+        agregar(acu);
     }
 }
 

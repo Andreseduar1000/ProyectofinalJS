@@ -30,6 +30,30 @@ td{
     height: 20px;
     width: auto;
 }
+@keyframes rotarClima {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+header{
+    /*background-color: black;
+    color: white;*/
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #ccedf1;
+    color:black;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+    width: 100%;
+    animation: rotarClima 20s linear infinite;
+    transform-origin: center;
+    
+}
 #carrito{
     position: fixed;
     display: none;
@@ -37,7 +61,7 @@ td{
     right: 0;
     width: 500px;
     height: 100vh; 
-    background-color: #a4d1d8;
+    background-color: #ccedf1;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     z-index:1000; 
 }
